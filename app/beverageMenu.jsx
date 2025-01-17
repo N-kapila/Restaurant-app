@@ -1,8 +1,8 @@
 import { StyleSheet, Appearance, Platform, SafeAreaView, ScrollView, FlatList, View, Text, Image } from "react-native";
 
 import { Colors } from '@/constants/Colors';
-import { MENU_ITEMS } from '@/constants/MenuItems'
-import MENU_IMAGES from '@/constants/MenuImages'
+import { BEVERAGES_MENU_ITEMS } from '@/constants/BeveragesMenu';
+import BEVERAGES_MENU_IMAGES from '@/constants/BeveragesMenuImages';
 
 export default function MenuScreen() {
     const colorScheme = Appearance.getColorScheme()
@@ -13,21 +13,17 @@ export default function MenuScreen() {
 
     const Container = Platform.OS === 'web' ? ScrollView : SafeAreaView;
 
-    //const separatorComp = <View style={styles.separator} />
-
-    //const headerComp = <Text>Top of List</Text>
-    const footerComp = <Text style={{ color: theme.text }}>End of Menu</Text>
+    const footerComp = <Text style={{ color: theme.text }}></Text>
 
     return (
         <Container>
 
             <FlatList
-                data={MENU_ITEMS}
+                data={BEVERAGES_MENU_ITEMS}
                 keyExtractor={(item) => item.id.toString()}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.contentContainer}
-                //ItemSeparatorComponent={separatorComp}
-                //ListHeaderComponent={headerComp}
+                
                 ListFooterComponent={footerComp}
                 ListFooterComponentStyle={styles.footerComp}
                 ListEmptyComponent={<Text>No items</Text>}
@@ -36,9 +32,10 @@ export default function MenuScreen() {
                         <View style={styles.menuTextRow}>
                             <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
                             <Text style={styles.menuItemText}>{item.description}</Text>
+                            <Text style={styles.menuItemPrice}>{item.price}</Text>
                         </View>
                         <Image
-                            source={MENU_IMAGES[item.id - 1]}
+                            source={BEVERAGES_MENU_IMAGES[item.id - 1]}
                             style={styles.menuImage}
                         />
                     </View>
@@ -57,22 +54,15 @@ function createStyles(theme, colorScheme) {
             paddingHorizontal: 12,
             backgroundColor: theme.background,
         },
-        separator: {
-            height: 1,
-            backgroundColor: colorScheme === 'dark' ? 'papayawhip' : "#000",
-            width: '50%',
-            maxWidth: 300,
-            marginHorizontal: 'auto',
-            marginBottom: 10,
-        },
         footerComp: {
             marginHorizontal: 'auto',
+            marginBottom: 70,
         },
         row: {
             flexDirection: 'row',
             width: '100%',
             maxWidth: 600,
-            height: 100,
+            height: 110,
             marginBottom: 10,
             borderStyle: 'solid',
             borderColor: colorScheme === 'dark' ? 'papayawhip' : '#000',
@@ -80,6 +70,7 @@ function createStyles(theme, colorScheme) {
             borderRadius: 20,
             overflow: 'hidden',
             marginHorizontal: 'auto',
+           
         },
         menuTextRow: {
             width: '65%',
@@ -87,6 +78,7 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
+             justifyContent: 'space-between',
         },
         menuItemTitle: {
             fontSize: 18,
@@ -96,8 +88,14 @@ function createStyles(theme, colorScheme) {
             color: theme.text,
         },
         menuImage: {
-            width: 100,
-            height: 100,
-        }
+            width: 110,
+            height: 110,
+        },
+        menuItemPrice: {
+            fontSize: 16,
+            color: theme.text,
+            fontWeight: 'bold',
+            paddingBottom: 5,
+        },
     })
 }

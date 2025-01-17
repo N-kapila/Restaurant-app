@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
   stepContainer: {
     height: 200,
     width: "auto",
-   
     gap: 8,
     marginBottom: 8,
   },
