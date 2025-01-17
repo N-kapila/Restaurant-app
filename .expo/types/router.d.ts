@@ -1,0 +1,14 @@
+/* eslint-disable */
+import * as Router from 'expo-router';
+
+export * from 'expo-router';
+
+declare module 'expo-router' {
+  export namespace ExpoRouter {
+    export interface __routes<T extends string | object = string> {
+      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/beverageMenu`; params?: Router.UnknownInputParams; } | { pathname: `/contact`; params?: Router.UnknownInputParams; } | { pathname: `/foodMenu`; params?: Router.UnknownInputParams; } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/menu`; params?: Router.UnknownInputParams; } | { pathname: `/offers`; params?: Router.UnknownInputParams; } | { pathname: `/special`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/beverageMenu`; params?: Router.UnknownOutputParams; } | { pathname: `/contact`; params?: Router.UnknownOutputParams; } | { pathname: `/foodMenu`; params?: Router.UnknownOutputParams; } | { pathname: `/`; params?: Router.UnknownOutputParams; } | { pathname: `/menu`; params?: Router.UnknownOutputParams; } | { pathname: `/offers`; params?: Router.UnknownOutputParams; } | { pathname: `/special`; params?: Router.UnknownOutputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };
+      href: Router.RelativePathString | Router.ExternalPathString | `/beverageMenu${`?${string}` | `#${string}` | ''}` | `/contact${`?${string}` | `#${string}` | ''}` | `/foodMenu${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | `/menu${`?${string}` | `#${string}` | ''}` | `/offers${`?${string}` | `#${string}` | ''}` | `/special${`?${string}` | `#${string}` | ''}` | `/_sitemap${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/beverageMenu`; params?: Router.UnknownInputParams; } | { pathname: `/contact`; params?: Router.UnknownInputParams; } | { pathname: `/foodMenu`; params?: Router.UnknownInputParams; } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/menu`; params?: Router.UnknownInputParams; } | { pathname: `/offers`; params?: Router.UnknownInputParams; } | { pathname: `/special`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+    }
+  }
+}
