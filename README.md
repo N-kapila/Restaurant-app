@@ -1,5 +1,7 @@
 # 🍽️ Restaurant App
 
+Live demo = https://www.linkedin.com/posts/nirmal-kapilarathne-79b7331a1_reactnative-expogo-mobileappdevelopment-activity-7286334499406196736-mUKp?utm_source=share&utm_medium=member_desktop
+
 A beautifully designed and user-friendly mobile application for food lovers to explore menus, discover offers, and contact the restaurant with ease. This app aims to enhance the dining experience by bringing everything customers need right to their fingertips.
 
 🚀 Features
