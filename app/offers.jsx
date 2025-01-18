@@ -1,8 +1,8 @@
 import { StyleSheet, Appearance, Platform, SafeAreaView, ScrollView, FlatList, View, Text, Image } from "react-native";
 
 import { Colors } from '@/constants/Colors';
-import { MENU_ITEMS } from '@/constants/MenuItems'
-import MENU_IMAGES from '@/constants/MenuImages'
+import { OFFER_ITEMS } from '@/constants/Offers'
+import OFFER_IMAGES from '@/constants/OfferImages'
 
 export default function OffersScreen() {
     const colorScheme = Appearance.getColorScheme()
@@ -13,21 +13,18 @@ export default function OffersScreen() {
 
     const Container = Platform.OS === 'web' ? ScrollView : SafeAreaView;
 
-    //const separatorComp = <View style={styles.separator} />
+    const separatorComp = <View style={styles.separator} />
 
-    //const headerComp = <Text>Top of List</Text>
-    const footerComp = <Text style={{ color: theme.text }}>End of Menu</Text>
+    const footerComp = <Text style={{ color: theme.text }}></Text>
 
     return (
         <Container>
-
             <FlatList
-                data={MENU_ITEMS}
+                data={OFFER_ITEMS}
                 keyExtractor={(item) => item.id.toString()}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.contentContainer}
-                //ItemSeparatorComponent={separatorComp}
-                //ListHeaderComponent={headerComp}
+                ItemSeparatorComponent={separatorComp}
                 ListFooterComponent={footerComp}
                 ListFooterComponentStyle={styles.footerComp}
                 ListEmptyComponent={<Text>No items</Text>}
@@ -35,16 +32,28 @@ export default function OffersScreen() {
                     <View style={styles.row}>
                         <View style={styles.menuTextRow}>
                             <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
-                            <Text style={styles.menuItemText}>{item.description}</Text>
+                            {Array.isArray(item.includes) && item.includes.length > 0 && (
+                                <View style={styles.includesList}>
+                                    <Text style={styles.menuItemText}>Includes:</Text>
+                                    {item.includes.map((include, index) => (
+                                        <Text key={index} style={styles.includeItem}> 
+                                            • {include}
+                                        </Text>
+                                    ))}
+                                </View>
+                            )}
+                            <View style={styles.priceContainer}>
+                                <Text style={styles.oldPrice}>{item.price.split(" ")[0]}</Text>
+                                <Text style={styles.newPrice}>{item.price.split(" ")[1]}</Text>
+                            </View>
                         </View>
                         <Image
-                            source={MENU_IMAGES[item.id - 1]}
+                            source={OFFER_IMAGES[item.id - 1]}
                             style={styles.menuImage}
                         />
                     </View>
                 )}
             />
-
         </Container>
     )
 }
@@ -55,7 +64,7 @@ function createStyles(theme, colorScheme) {
             paddingTop: 10,
             paddingBottom: 20,
             paddingHorizontal: 12,
-            backgroundColor: theme.background,
+            backgroundColor: "transparent",
         },
         separator: {
             height: 1,
@@ -72,7 +81,7 @@ function createStyles(theme, colorScheme) {
             flexDirection: 'row',
             width: '100%',
             maxWidth: 600,
-            height: 100,
+            height: 180,
             marginBottom: 10,
             borderStyle: 'solid',
             borderColor: colorScheme === 'dark' ? 'papayawhip' : '#000',
@@ -87,17 +96,42 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
+            justifyContent:"space-around"
         },
         menuItemTitle: {
-            fontSize: 18,
-            textDecorationLine: 'underline',
+            fontSize: 25,
+            fontWeight: 'bold',
         },
         menuItemText: {
             color: theme.text,
         },
         menuImage: {
-            width: 100,
-            height: 100,
-        }
+            width: 180,
+            height: 180,
+        },
+        includesList: {
+            marginTop: 10,
+        },
+        includeItem: {
+            paddingLeft: 20,
+            color: theme.text,
+        },
+        priceContainer: {
+            flexDirection: "row",
+            alignItems: "center",
+            marginTop: 3,
+            paddingLeft: 20,
+        },
+        oldPrice: {
+            textDecorationLine: "line-through", 
+            color: "gray",
+            marginRight: 8, 
+            fontSize: 14,
+        },
+        newPrice: {
+            color: "green", 
+            fontWeight: "bold",
+            fontSize: 20,
+        },
     })
 }
