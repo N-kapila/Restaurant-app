@@ -1,7 +1,6 @@
-import { Image, StyleSheet, Pressable, Text, ImageBackground} from "react-native";
+import { Image, StyleSheet, Pressable, Text, ImageBackground, View} from "react-native";
 import { Link } from "expo-router";
 
-import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -12,6 +11,7 @@ import offerImg from "@/assets/images/food-five.png";
 import contactImg from "@/assets/images/food-seven.png";
 
 export default function HomeScreen() {
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#ffffff" }}
@@ -25,11 +25,8 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome to the</ThemedText> 
         <Text style={styles.highlight}>Spicy World!</Text>
-        {/* <HelloWave /> */}
       </ThemedView>
 
-      {/* <Image source={require("@/assets/images/my-img1.png")} 
-      style={styles.myImage}/> */}
 
        <ThemedView style={styles.stepContainer}>
          <ImageBackground
@@ -86,6 +83,14 @@ export default function HomeScreen() {
         </Link>  
         </ImageBackground>
       </ThemedView>
+
+       <ThemedView style={styles.footerContainer}>
+        <View style={styles.line} />
+        <Text style={styles.footerText}>
+                <Text style={styles.footerHighlight}>@2025 Spicy World. All Rights Reserved.</Text> {'\n '}{'\n '}
+                Designed by: <Text style={styles.name}>Nirmal Kapilarathne</Text>
+            </Text>
+       </ThemedView>
      
     </ParallaxScrollView>
   );
@@ -148,4 +153,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     opacity: 0.8,
   },
+  footerContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    gap: 5,
+    marginTop: 20
+  },
+  line: {
+    borderBottomColor: "rgba(229, 227, 227, 0.5)",
+    borderBottomWidth: 1,
+    width: '100%',
+    maxWidth: 300,
+    marginHorizontal: 'auto',
+    marginBottom: 10,
+  },
+  footerText: {
+        fontSize: 14,
+        color: '#bdbdbd', 
+        textAlign: 'center',
+    },
+    footerHighlight: {
+        color: '#ffffff', 
+        fontWeight: 'bold',
+    },
+    name: {
+        color: '#00bcd4', 
+        fontStyle: 'italic',
+        fontWeight: '600',
+    },
 });
