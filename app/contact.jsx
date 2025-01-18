@@ -1,96 +1,96 @@
-import { StyleSheet, Image, Platform } from 'react-native';
-
+import React from 'react';
+import { StyleSheet, Image, View , Text,Platform} from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 
-export default function TabTwoScreen() {
+const locations = [
+  { id: 1, latitude: 40.748817, longitude: -73.985428, title: 'Spicy World NY', description: 'New York, NY' },
+  { id: 2, latitude: 34.052235, longitude: -118.243683, title: 'Spicy World LA', description: 'Los Angeles, CA' },
+  { id: 3, latitude: 51.507351, longitude: -0.127758, title: 'Spicy Europe', description: 'London, UK' },
+];
+
+export default function ContactScreen() {
+ 
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
+              <Image
+                source={require("@/assets/images/contactCover.png")}
+                style={styles. coverImage}
+              />
+            }
+      >
+        <Text type="title" style={styles.highlight}>Spicy World! 🍽️🌶️</Text>
+      <ThemedText style={styles.slogan}>Where Every Bite Tells a Flavorful Story!</ThemedText>
+
+      <Collapsible title="🌟 Our Story">
+        <ThemedText type="defaultSemiBold">
+          Welcome to Spicy World, where passion meets flavor! 🌶️✨{'\n '}{'\n '}
+          <ThemedText >We craft mouthwatering dishes with bold spices and fresh ingredients. From sizzling starters to delightful desserts, Spicy World offers a flavorful and unforgettable dining experience.</ThemedText> {'\n '}
         </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
+       <ThemedText type="defaultSemiBold">Come, savor the spice, and let your taste buds dance! 🍽️🎉</ThemedText>
+      </Collapsible>
+
+      <Collapsible title="📞 Get in Touch">
+        <ThemedText style={styles.contactInfo}>
+          <ThemedText type="defaultSemiBold"> 🏪</ThemedText> 1234 Spicy Street, Flavorville, USA{'\n '}
+          <ThemedText type="defaultSemiBold">☎</ThemedText> 123-456-7890{'\n '}
+          <ThemedText type="defaultSemiBold">💌</ThemedText> info@spicyworld.com{'\n '}
+          <ThemedText type="defaultSemiBold">🕒</ThemedText> Mon-Sun: 11:00 AM - 10:00 PM{'\n '} 
         </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
+      </Collapsible>
+
+      <Collapsible title="📍 Where to Find Us">
+      <View style={{ height: 300, marginTop: 10 }}>
+        <MapView
+          style={{ flex: 1 }}
+          initialRegion={{
+            latitude: 40.748817,
+            longitude: -73.985428,
+            latitudeDelta: 30,
+            longitudeDelta: 30,
+          }}
+        >
+          {locations.map((location) => (
+            <Marker
+              key={location.id}
+              coordinate={{
+                latitude: location.latitude,
+                longitude: location.longitude,
+              }}
+              title={location.title}
+              description={location.description}
+            />
+          ))}
+        </MapView>
+      </View>
+    </Collapsible>
+
+      <Collapsible title="🗣️ Your Voice Matters">
+        <ThemedText>
+          We value your feedback and suggestions.{'\n '}{'\n '}
+          <ThemedText type="defaultSemiBold">Share your thoughts with us at: ✉️ </ThemedText>
+           <ExternalLink href="#">
+          <ThemedText type="link" > suggestions@spicyworld.com</ThemedText>
         </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
         </ThemedText>
       </Collapsible>
-      <Collapsible title="Images">
+
+      <Collapsible title="🔒 Your Trust, Our Priority">
         <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
+          At Spicy World, we are committed to ensuring the privacy and security of your personal information.{'\n '}{'\n '}
+          <ThemedText type="defaultSemiBold">For more information, visit our Privacy Policy:</ThemedText>
+          <ExternalLink href="#">
+          <ThemedText type="link"> spicyworld.com/privacy</ThemedText>
         </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
         </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
+       
       </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
+      
     </ParallaxScrollView>
   );
 }
@@ -102,8 +102,29 @@ const styles = StyleSheet.create({
     left: -35,
     position: 'absolute',
   },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  coverImage: {
+    flex: 1,
+    height: "100%",
+    width:"100%",
+    alignSelf: "center",
+    justifyContent: "center",
   },
+  highlight: {
+    fontWeight: "bold",
+    color: "red",
+    fontSize: 40,
+  },
+  slogan: {
+    fontSize: 17,
+    color: "rgba(248, 248, 248, 0.5)",
+    fontStyle: "italic",
+    textAlign: "center",
+    margin: 8,
+},
+ contactInfo: {
+  textAlign: "left",
+  fontSize: 16,
+  margin: 8,
+  marginBottom:0,
+},
 });
