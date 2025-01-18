@@ -98,15 +98,9 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     height: 200,
-    width: "auto",
+    width: "100%",
     gap: 8,
     marginBottom: 8,
-  },
-  myImage: {
-    height: 200,
-    width: 200,
-    alignSelf: "center",
-    justifyContent: "center",
   },
   button: {
     width: "100%",
@@ -131,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
-    opacity: 0.8,
+    opacity: 0.9,
   },
   footerContainer: {
     flexDirection: "column",
