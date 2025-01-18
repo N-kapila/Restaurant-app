@@ -1,23 +1,22 @@
 import { StyleSheet, Appearance, Platform, SafeAreaView, ScrollView, FlatList, View, Text, Image } from "react-native";
 
 import { Colors } from '@/constants/Colors';
-import { SPECIAL_ITEMS } from '@/constants/SpecialItems'
-import SPECIAl_IMAGES from '@/constants/SpecialImages'
+import { SPECIAL_ITEMS } from '@/constants/SpecialItems';
+import SPECIAl_IMAGES from '@/constants/SpecialImages';
 
 export default function SpecialScreen() {
-    const colorScheme = Appearance.getColorScheme()
+    const colorScheme = Appearance.getColorScheme();
 
     const theme = colorScheme === 'dark' ? Colors.dark : Colors.light;
 
-    const styles = createStyles(theme, colorScheme)
+    const styles = createStyles(theme, colorScheme);
 
     const Container = Platform.OS === 'web' ? ScrollView : SafeAreaView;
 
-    const footerComp = <Text style={{ color: theme.text }}></Text>
+    const footerComp = <Text style={{ color: theme.text }}></Text>;
 
     return (
         <Container>
-
             <FlatList
                 data={SPECIAL_ITEMS}
                 keyExtractor={(item) => item.id.toString()}
@@ -41,9 +40,8 @@ export default function SpecialScreen() {
                     </View>
                 )}
             />
-
         </Container>
-    )
+    );
 }
 
 function createStyles(theme, colorScheme) {
@@ -77,7 +75,7 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
-            justifyContent:"space-around"
+            justifyContent: "space-around",
         },
         menuItemTitle: {
             fontSize: 18,
@@ -100,5 +98,5 @@ function createStyles(theme, colorScheme) {
             fontWeight: 'bold',
             color: theme.text,
         },
-    })
+    });
 }

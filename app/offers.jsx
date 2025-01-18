@@ -96,7 +96,7 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
-            justifyContent:"space-around"
+            justifyContent: "space-around"
         },
         menuItemTitle: {
             fontSize: 25,

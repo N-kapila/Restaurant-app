@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Pressable, Text, ImageBackground} from "react-native";
+import { Image, StyleSheet, Pressable, Text, ImageBackground } from "react-native";
 import { Link } from "expo-router";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -15,43 +15,42 @@ export default function MenuScreen() {
       headerImage={
         <Image
           source={require("@/assets/images/food-one.png")}
-          style={styles. coverImage}
+          style={styles.coverImage}
         />
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Discover the flavors of our</ThemedText> 
+        <ThemedText type="subtitle">Discover the flavors of our</ThemedText>
         <Text style={styles.highlight}>Signature Dishes!</Text>
       </ThemedView>
 
-       <ThemedView style={styles.stepContainer}>
-         <ImageBackground
-        source={foodImg}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <Link href={"/foodMenu"} style={{marginHorizontal:"auto"}} asChild>
-        <Pressable style={styles.button}>
-           <Text style={styles.buttonText}>Foods 🍜</Text> 
-        </Pressable>
-        </Link>  
+      <ThemedView style={styles.stepContainer}>
+        <ImageBackground
+          source={foodImg}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <Link href={"/foodMenu"} style={{ marginHorizontal: "auto" }} asChild>
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>Foods 🍜</Text>
+            </Pressable>
+          </Link>
         </ImageBackground>
       </ThemedView>
 
-       <ThemedView style={styles.stepContainer}>
+      <ThemedView style={styles.stepContainer}>
         <ImageBackground
-        source={beveImg}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <Link href={"/beverageMenu"} style={{marginHorizontal:"auto"}} asChild>
-        <Pressable style={styles.button}>
-           <Text style={styles.buttonText}>Beverages 🍹</Text> 
-        </Pressable>
-        </Link>  
+          source={beveImg}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <Link href={"/beverageMenu"} style={{ marginHorizontal: "auto" }} asChild>
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>Beverages 🍹</Text>
+            </Pressable>
+          </Link>
         </ImageBackground>
       </ThemedView>
-     
     </ParallaxScrollView>
   );
 }
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
   coverImage: {
     flex: 1,
     height: "100%",
-    width:"100%",
+    width: "100%",
     alignSelf: "center",
     justifyContent: "center",
   },
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 8,
   },
-  button:{
+  button: {
     width: "100%",
     height: 50,
     backgroundColor: 'rgba(67, 67, 67, 0.5)',
@@ -91,14 +90,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderRadius: 10,
   },
-  buttonText:{
+  buttonText: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
     justifyContent: "center",
     fontSize: 25,
   },
-   image: {
+  image: {
     width: '100%',
     height: '100%',
     flex: 1,

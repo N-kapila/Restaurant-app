@@ -70,7 +70,6 @@ function createStyles(theme, colorScheme) {
             borderRadius: 20,
             overflow: 'hidden',
             marginHorizontal: 'auto',
-           
         },
         menuTextRow: {
             width: '65%',
@@ -78,7 +77,7 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
-             justifyContent: 'space-between',
+            justifyContent: 'space-between',
         },
         menuItemTitle: {
             fontSize: 18,
@@ -97,5 +96,5 @@ function createStyles(theme, colorScheme) {
             fontWeight: 'bold',
             paddingBottom: 5,
         },
-    })
+    });
 }

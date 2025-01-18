@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, View , Text, TouchableOpacity, Linking} from 'react-native';
+import { StyleSheet, Image, View, Text, TouchableOpacity, Linking } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -17,26 +17,25 @@ const locations = [
 ];
 
 export default function ContactScreen() {
- 
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-              <Image
-                source={require("@/assets/images/contactCover.png")}
-                style={styles. coverImage}
-              />
-            }
-      >
-        <Text type="title" style={styles.highlight}>Spicy World! 🍽️🌶️</Text>
+        <Image
+          source={require("@/assets/images/contactCover.png")}
+          style={styles.coverImage}
+        />
+      }
+    >
+      <Text type="title" style={styles.highlight}>Spicy World! 🍽️🌶️</Text>
       <ThemedText style={styles.slogan}>Where Every Bite Tells a Flavorful Story!</ThemedText>
 
       <Collapsible title="🌟 Our Story">
         <ThemedText type="defaultSemiBold">
           Welcome to Spicy World, where passion meets flavor! 🌶️✨{'\n '}{'\n '}
-          <ThemedText >We craft mouthwatering dishes with bold spices and fresh ingredients. From sizzling starters to delightful desserts, Spicy World offers a flavorful and unforgettable dining experience.</ThemedText> {'\n '}
+          <ThemedText>We craft mouthwatering dishes with bold spices and fresh ingredients. From sizzling starters to delightful desserts, Spicy World offers a flavorful and unforgettable dining experience.</ThemedText> {'\n '}
         </ThemedText>
-       <ThemedText type="defaultSemiBold">Come, savor the spice, and let your taste buds dance! 🍽️🎉</ThemedText>
+        <ThemedText type="defaultSemiBold">Come, savor the spice, and let your taste buds dance! 🍽️🎉</ThemedText>
       </Collapsible>
 
       <Collapsible title="📞 Get in Touch">
@@ -44,58 +43,57 @@ export default function ContactScreen() {
           <ThemedText type="defaultSemiBold"> 🏪</ThemedText> 1234 Spicy Street, Flavorville, USA{'\n '}
           <ThemedText type="defaultSemiBold">☎</ThemedText> 123-456-7890{'\n '}
           <ThemedText type="defaultSemiBold">💌</ThemedText> info@spicyworld.com{'\n '}
-          <ThemedText type="defaultSemiBold">🕒</ThemedText> Mon-Sun: 11:00 AM - 10:00 PM{'\n '} 
+          <ThemedText type="defaultSemiBold">🕒</ThemedText> Mon-Sun: 11:00 AM - 10:00 PM{'\n '}
         </ThemedText>
         <View style={styles.socialIcons}>
-            <TouchableOpacity onPress={() => Linking.openURL('https://facebook.com')}>
-                   <FontAwesome name="facebook-f" size={25} color="#1877F2" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com')}>
-                   <FontAwesome name="instagram" size={26} color="#962fbf" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Linking.openURL('https://x.com')}>
-                    <FontAwesome6 name="x-twitter" size={24} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Linking.openURL('https://tiktok.com/en')}>
-                    <FontAwesome5 name="tiktok" size={24} color="white" />
-            </TouchableOpacity>
-
+          <TouchableOpacity onPress={() => Linking.openURL('https://facebook.com')}>
+            <FontAwesome name="facebook-f" size={25} color="#1877F2" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com')}>
+            <FontAwesome name="instagram" size={26} color="#962fbf" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://x.com')}>
+            <FontAwesome6 name="x-twitter" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://tiktok.com/en')}>
+            <FontAwesome5 name="tiktok" size={24} color="white" />
+          </TouchableOpacity>
         </View>
       </Collapsible>
 
       <Collapsible title="📍 Where to Find Us">
-      <View style={{ height: 300, marginTop: 10 }}>
-        <MapView
-          style={{ flex: 1 }}
-          initialRegion={{
-            latitude: 40.748817,
-            longitude: -73.985428,
-            latitudeDelta: 30,
-            longitudeDelta: 30,
-          }}
-        >
-          {locations.map((location) => (
-            <Marker
-              key={location.id}
-              coordinate={{
-                latitude: location.latitude,
-                longitude: location.longitude,
-              }}
-              title={location.title}
-              description={location.description}
-            />
-          ))}
-        </MapView>
-      </View>
-    </Collapsible>
+        <View style={{ height: 300, marginTop: 10 }}>
+          <MapView
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude: 40.748817,
+              longitude: -73.985428,
+              latitudeDelta: 30,
+              longitudeDelta: 30,
+            }}
+          >
+            {locations.map((location) => (
+              <Marker
+                key={location.id}
+                coordinate={{
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                }}
+                title={location.title}
+                description={location.description}
+              />
+            ))}
+          </MapView>
+        </View>
+      </Collapsible>
 
       <Collapsible title="🗣️ Your Voice Matters">
         <ThemedText>
           We value your feedback and suggestions.{'\n '}{'\n '}
           <ThemedText type="defaultSemiBold">Share your thoughts with us at: ✉️ </ThemedText>
-           <ExternalLink href="#">
-          <ThemedText type="link" > suggestions@spicyworld.com</ThemedText>
-        </ExternalLink>
+          <ExternalLink href="#">
+            <ThemedText type="link"> suggestions@spicyworld.com</ThemedText>
+          </ExternalLink>
         </ThemedText>
       </Collapsible>
 
@@ -104,12 +102,10 @@ export default function ContactScreen() {
           At Spicy World, we are committed to ensuring the privacy and security of your personal information.{'\n '}{'\n '}
           <ThemedText type="defaultSemiBold">For more information, visit our Privacy Policy:</ThemedText>
           <ExternalLink href="#">
-          <ThemedText type="link"> spicyworld.com/privacy</ThemedText>
-        </ExternalLink>
+            <ThemedText type="link"> spicyworld.com/privacy</ThemedText>
+          </ExternalLink>
         </ThemedText>
-       
       </Collapsible>
-      
     </ParallaxScrollView>
   );
 }
@@ -124,7 +120,7 @@ const styles = StyleSheet.create({
   coverImage: {
     flex: 1,
     height: "100%",
-    width:"100%",
+    width: "100%",
     alignSelf: "center",
     justifyContent: "center",
   },
@@ -139,17 +135,17 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     textAlign: "center",
     margin: 8,
-},
- contactInfo: {
-  textAlign: "left",
-  fontSize: 16,
-  margin: 8,
-  marginBottom:0,
-},
-socialIcons: {
-  flexDirection: 'row',
-  justifyContent: 'center',
-  gap: 30,
-  margin: 8,
-},
+  },
+  contactInfo: {
+    textAlign: "left",
+    fontSize: 16,
+    margin: 8,
+    marginBottom: 0,
+  },
+  socialIcons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 30,
+    margin: 8,
+  },
 });

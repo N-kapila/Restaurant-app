@@ -18,29 +18,29 @@ export default function MenuScreen() {
     return (
         <Container>
             <SectionList
-            contentContainerStyle={styles.contentContainer}
-            ListFooterComponent={footerComp}
-            ListFooterComponentStyle={styles.footerComp}
-            ListEmptyComponent={<Text>No items</Text>}
-            sections={FOOD_SECTIONS}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-                <View style={styles.row}>
-                     <View style={styles.menuTextRow}>
-                        <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
-                        <Text style={styles.menuItemText}>{item.description}</Text>
-                        <Text style={styles.menuItemPrice}>{item.price}</Text>
-                     </View>
-                    <Image
-                     source={FOOD_MENU_IMAGES[item.id - 1]}
-                    style={styles.menuImage}
-                     />
-                </View>
-      )}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.sectionHeader}>{title}</Text>
-      )}
-    />
+                contentContainerStyle={styles.contentContainer}
+                ListFooterComponent={footerComp}
+                ListFooterComponentStyle={styles.footerComp}
+                ListEmptyComponent={<Text>No items</Text>}
+                sections={FOOD_SECTIONS}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <View style={styles.row}>
+                        <View style={styles.menuTextRow}>
+                            <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
+                            <Text style={styles.menuItemText}>{item.description}</Text>
+                            <Text style={styles.menuItemPrice}>{item.price}</Text>
+                        </View>
+                        <Image
+                            source={FOOD_MENU_IMAGES[item.id - 1]}
+                            style={styles.menuImage}
+                        />
+                    </View>
+                )}
+                renderSectionHeader={({ section: { title } }) => (
+                    <Text style={styles.sectionHeader}>{title}</Text>
+                )}
+            />
         </Container>
     )
 }
@@ -53,7 +53,6 @@ function createStyles(theme, colorScheme) {
             paddingHorizontal: 12,
             backgroundColor: theme.background,
         },
-      
         footerComp: {
             marginHorizontal: 'auto',
             marginBottom: 70,
@@ -77,7 +76,7 @@ function createStyles(theme, colorScheme) {
             paddingLeft: 10,
             paddingRight: 5,
             flexGrow: 1,
-            justifyContent:"space-around"
+            justifyContent: "space-around"
         },
         menuItemTitle: {
             fontSize: 18,
@@ -90,7 +89,7 @@ function createStyles(theme, colorScheme) {
             width: 120,
             height: 120,
         },
-         sectionHeader: {
+        sectionHeader: {
             fontSize: 24,
             fontWeight: 'bold',
             backgroundColor: theme.background,
