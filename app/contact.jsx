@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Image, View , Text,Platform} from 'react-native';
+import { StyleSheet, Image, View , Text, TouchableOpacity, Linking} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
+
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 const locations = [
   { id: 1, latitude: 40.748817, longitude: -73.985428, title: 'Spicy World NY', description: 'New York, NY' },
@@ -42,6 +46,21 @@ export default function ContactScreen() {
           <ThemedText type="defaultSemiBold">💌</ThemedText> info@spicyworld.com{'\n '}
           <ThemedText type="defaultSemiBold">🕒</ThemedText> Mon-Sun: 11:00 AM - 10:00 PM{'\n '} 
         </ThemedText>
+        <View style={styles.socialIcons}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://facebook.com')}>
+                   <FontAwesome name="facebook-f" size={25} color="#1877F2" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com')}>
+                   <FontAwesome name="instagram" size={26} color="#962fbf" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://x.com')}>
+                    <FontAwesome6 name="x-twitter" size={24} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://tiktok.com/en')}>
+                    <FontAwesome5 name="tiktok" size={24} color="white" />
+            </TouchableOpacity>
+
+        </View>
       </Collapsible>
 
       <Collapsible title="📍 Where to Find Us">
@@ -126,5 +145,11 @@ const styles = StyleSheet.create({
   fontSize: 16,
   margin: 8,
   marginBottom:0,
+},
+socialIcons: {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  gap: 30,
+  margin: 8,
 },
 });
